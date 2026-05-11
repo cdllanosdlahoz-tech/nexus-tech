@@ -302,10 +302,11 @@
             font-family: var(--font-mono);
             font-size: 0.85rem;
             margin-bottom: 2rem;
-            height: 400px;
+            height: 450px;
             overflow-y: auto;
             color: #0f0;
             box-shadow: 0 0 50px rgba(0, 255, 0, 0.05);
+            scroll-behavior: smooth;
         }
 
         .ia-input-group {
@@ -394,16 +395,17 @@
     <section class="ia-section">
         <div class="ia-container">
             <h2 style="font-family: var(--font-tech); font-size: 2.5rem; margin-bottom: 1rem;">NEXUS BRAIN IA</h2>
-            <p style="margin-bottom: 3rem; color: #666; font-family: var(--font-mono); font-size: 0.7rem;">CONSULTA NUESTRA BASE DE DATOS SEMÁNTICA EN TIEMPO REAL</p>
+            <p style="margin-bottom: 3rem; color: #666; font-family: var(--font-mono); font-size: 0.7rem;">NÚCLEO CONVERSACIONAL INTEGRADO - VERSIÓN 3.0</p>
             
             <div class="ia-terminal" id="ia-terminal">
                 > SISTEMA NEXUS INICIALIZADO...<br>
-                > BASE DE DATOS CARGADA: 16 MÓDULOS DE ALTA FIDELIDAD.<br>
-                > ESPERANDO COMANDO DEL USUARIO...
+                > BASE DE DATOS SEMÁNTICA CONECTADA.<br>
+                > AGENTE VIRTUAL: SNOOPY-TECH-AI EN LÍNEA.<br>
+                > HOLA. SOY EL CEREBRO DE NEXUS. PREGÚNTAME LO QUE QUIERAS SOBRE EL FUTURO.
             </div>
 
             <form id="ia-form" class="ia-input-group">
-                <input type="text" id="ia-input" class="ia-input" placeholder="Pregúntame sobre CRISPR, IA, Musk o el Futuro...">
+                <input type="text" id="ia-input" class="ia-input" placeholder="Pregunta sobre CRISPR, IA, Musk, Cuántica o simplemente saluda...">
                 <button type="submit" class="ia-btn">PREGUNTAR</button>
             </form>
         </div>
@@ -434,193 +436,209 @@
                 id: "01",
                 title: "IA Generativa",
                 category: "Tech",
+                keywords: ["ia", "inteligencia artificial", "chatgpt", "generativa", "algoritmos", "redes neuronales"],
                 short: "Máquinas que crean arte, código y lenguaje.",
                 desc: "La Inteligencia Artificial Generativa representa el cambio más profundo en la computación desde el microchip. Utiliza redes neuronales profundas para aprender patrones de vastas bases de datos y generar contenido nuevo y original.",
                 how: "Funciona mediante Transformadores (LLMs) que predicen la siguiente palabra o píxel basándose en un 'contexto' masivo.",
                 impact: "Ha democratizado la creación, pero plantea desafíos éticos sobre la verdad y el empleo. El 79% de los jóvenes ya la usan semanalmente.",
                 stats: "Mercado estimado: 1.3 Trillones de USD para 2032.",
                 img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M30,50 Q50,20 70,50 T70,80" stroke-width="2"/><circle cx="50" cy="50" r="20" stroke-dasharray="4 4"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M30,50 Q40,30 50,50 T70,50 M45,40 Q50,20 55,40 M40,60 Q50,80 60,60" stroke-width="2" /></svg>`
             },
             {
                 id: "02",
                 title: "CRISPR-Cas9",
                 category: "Tech",
+                keywords: ["crispr", "adn", "genetica", "genes", "biologia", "doudna", "curar enfermedades"],
                 short: "Tijeras moleculares para editar la vida.",
                 desc: "CRISPR es una tecnología que permite a los científicos editar genes con una precisión nunca antes vista. Es, esencialmente, la capacidad de 'programar' el código fuente de los seres vivos.",
                 how: "Utiliza una proteína (Cas9) guiada por ARN para encontrar una secuencia específica de ADN y cortarla, permitiendo su eliminación o reemplazo.",
                 impact: "Potencial para curar todas las enfermedades hereditarias y el cáncer, pero abre el debate sobre los 'bebés de diseño'.",
                 stats: "Precisión de edición aumentada en un 99.8% desde 2012.",
                 img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M40,20 L60,80 M60,20 L40,80" stroke-width="2"/><circle cx="50" cy="50" r="30"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M40,20 L60,80 M60,20 L40,80 M35,40 H65 M35,60 H65" stroke-width="2" /></svg>`
             },
             {
                 id: "03",
                 title: "Vida Multiplanetaria",
                 category: "Tech",
+                keywords: ["marte", "planetas", "espacio", "cohetes", "spacex", "musk", "estrellas", "luna"],
                 short: "Haciendo de la humanidad una especie estelar.",
                 desc: "El objetivo de establecer una presencia permanente en Marte. Esto no es solo exploración, es un 'seguro de vida' para la conciencia humana.",
                 how: "Se basa en cohetes reutilizables de gran escala como el Starship, reduciendo los costos de lanzamiento en 100 veces.",
                 impact: "Inspiración global masiva y el desarrollo de tecnologías de soporte vital extremo que servirán en la Tierra.",
                 stats: "Meta de colonización inicial: 2029-2035.",
                 img: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,20 Q70,50 50,80 Q30,50 50,20" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,20 Q70,50 50,80 Q30,50 50,20 M40,60 H60" stroke-width="2" /></svg>`
             },
             {
                 id: "04",
                 title: "Computación Cuántica",
                 category: "Tech",
+                keywords: ["cuantica", "quantum", "qubits", "computadora", "velocidad", "superposicion"],
                 short: "El fin de la computación binaria tradicional.",
                 desc: "Aprovecha las leyes de la física cuántica para procesar información de una manera que las computadoras normales simplemente no pueden.",
                 how: "Utiliza Qubits que pueden estar en varios estados al mismo tiempo (superposición) y estar conectados instantáneamente (entrelazamiento).",
                 impact: "Resolverá problemas de química y materiales en minutos que tardarían miles de años hoy. Romperá toda la seguridad actual.",
                 stats: "Capacidad de procesamiento: Millones de veces superior a una CPU clásica.",
                 img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><rect x="30" y="30" width="40" height="40" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><rect x="30" y="30" width="40" height="40" stroke-width="2" /></svg>`
             },
             {
                 id: "05",
                 title: "Metaverso",
                 category: "Tech",
+                keywords: ["metaverso", "realidad virtual", "vr", "digital", "avatares", "mundo virtual"],
                 short: "La convergencia de lo físico y lo digital.",
                 desc: "Un entorno virtual persistente donde los humanos interactúan social y económicamente a través de avatares en 3D.",
                 how: "Integración de Realidad Virtual (VR), Realidad Aumentada (AR) y economías basadas en Blockchain.",
                 impact: "Cambiará la educación, el trabajo y el entretenimiento. El 60% de las marcas de lujo ya operan en el Metaverso.",
                 stats: "Economía digital potencial: 5 trillones de dólares.",
                 img: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M25,40 H75 V60 H25 Z" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M25,40 H75 V60 H25 Z M35,40 V35" stroke-width="2" /></svg>`
             },
             {
                 id: "06",
                 title: "Fusión Nuclear",
                 category: "Tech",
+                keywords: ["fusion", "energia", "nuclear", "sol", "limpia", "estrellas"],
                 short: "Energía limpia de las estrellas en la Tierra.",
                 desc: "A diferencia de la fisión (actual), la fusión une núcleos atómicos, liberando energía masiva sin residuos radiactivos de larga duración.",
                 how: "Utiliza reactores Tokamak que confinan plasma a millones de grados mediante potentes imanes.",
                 impact: "Energía infinita y barata, deteniendo el cambio climático de forma radical.",
                 stats: "Un gramo de combustible de fusión equivale a 11 toneladas de carbón.",
                 img: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="50" r="25" stroke-width="3"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="50" r="25" stroke-width="3" /></svg>`
             },
             {
                 id: "07",
                 title: "Interfaces Cerebro",
                 category: "Tech",
+                keywords: ["neuralink", "cerebro", "mente", "pensamiento", "chips", "telepatia"],
                 short: "Conexión directa entre mente y ordenador.",
                 desc: "Sistemas como Neuralink que implantan hilos delgados en la corteza cerebral para leer la actividad neuronal.",
                 how: "Traduce señales eléctricas del cerebro en comandos digitales (moverse, escribir, controlar máquinas).",
                 impact: "Devolverá la movilidad a paralíticos y permitirá la telepatía tecnológica.",
                 stats: "Latencia de respuesta: menor a 1ms.",
                 img: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,20 C30,20 20,40 20,60" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,20 C30,20 20,40 20,60 C20,85 50,90 50,90" stroke-width="2" /></svg>`
             },
             {
                 id: "08",
                 title: "Blockchain 2.0",
                 category: "Tech",
+                keywords: ["blockchain", "cripto", "bitcoin", "ethereum", "contratos inteligentes", "web3", "descentralizacion"],
                 short: "Soberanía digital y confianza sin intermediarios.",
                 desc: "La evolución de las cadenas de bloques hacia sistemas programables (Smart Contracts) que gestionan el valor de forma automática.",
                 how: "Libros contables distribuidos que no pueden ser alterados ni censurados por gobiernos o bancos.",
                 impact: "Eliminación de la corrupción en transacciones y creación de una nueva economía global descentralizada.",
                 stats: "Más de 500,000 nodos activos protegiendo la red global.",
                 img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,10 L90,30 V70 L50,90 L10,70 V30 Z" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,10 L90,30 V70 L50,90 L10,70 V30 Z M50,10 V90" stroke-width="2" /></svg>`
             },
             {
                 id: "09",
                 title: "Satoshi Nakamoto",
                 category: "Mind",
+                keywords: ["satoshi", "nakamoto", "creador", "bitcoin", "anonimo", "dinero"],
                 short: "El fantasma que cambió el dinero.",
                 desc: "Identidad anónima detrás de Bitcoin. En 2008 publicó el paper que resolvió el problema del doble gasto sin confianza centralizada.",
                 how: "Creó la arquitectura de la Prueba de Trabajo (Proof of Work) y el primer bloque de la historia.",
                 impact: "Inició la revolución cripto y planteó la pregunta: ¿quién debe controlar nuestro dinero?",
                 stats: "Patrimonio estimado (si existe): 1.1 millones de Bitcoins.",
                 img: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="40" r="15" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="40" r="15" stroke-width="2" /><path d="M30,80 Q50,50 70,80" stroke-width="2" /></svg>`
             },
             {
                 id: "10",
                 title: "Jennifer Doudna",
                 category: "Mind",
+                keywords: ["jennifer", "doudna", "nobel", "quimica", "biologa", "crispr"],
                 short: "La arquitecta de la genética moderna.",
                 desc: "Bioquímica ganadora del Nobel que descubrió cómo usar CRISPR como una herramienta de edición genética universal.",
                 how: "Lideró la investigación que convirtió un mecanismo inmune de bacterias en una herramienta de laboratorio global.",
                 impact: "Líder ética en el debate sobre la edición de la línea germinal humana.",
                 stats: "Premio Nobel de Química 2020.",
                 img: "https://images.unsplash.com/photo-1579154235602-3c35bd799657?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,10 Q30,30 50,50 Q70,70 50,90" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,10 Q30,30 50,50 Q70,70 50,90 M50,10 Q70,30 50,50 Q30,70 50,90" stroke-width="2" /></svg>`
             },
             {
                 id: "11",
                 title: "Elon Musk",
                 category: "Mind",
+                keywords: ["elon", "musk", "tesla", "spacex", "twitter", "x", "visionario"],
                 short: "Acelerando el futuro multiplanetario.",
                 desc: "Impulsor de Tesla, SpaceX y Neuralink. Su filosofía es el 'Pensamiento desde Primeros Principios'.",
                 how: "Utiliza capital de riesgo para resolver problemas existenciales: energía, transporte y supervivencia de la especie.",
                 impact: "Hizo los coches eléctricos deseables y los cohetes reutilizables una realidad.",
                 stats: "Lanzamientos de SpaceX en 2023: Casi 100 misiones exitosas.",
                 img: "https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,20 L30,70 L70,70 Z" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,20 L30,70 L70,70 Z M50,60 V80" stroke-width="2" /></svg>`
             },
             {
                 id: "12",
                 title: "Timnit Gebru",
                 category: "Mind",
+                keywords: ["timnit", "gebru", "etica", "sesgos", "justicia", "google", "negra"],
                 short: "La conciencia ética de la IA.",
                 desc: "Investigadora líder en ética algorítmica. Co-fundadora de 'Black in AI'.",
                 how: "Denunció los sesgos raciales y de género en los sistemas de reconocimiento facial corporativos.",
                 impact: "Obligó a las Big Tech a replantearse la seguridad y la justicia en el desarrollo de la IA.",
                 stats: "Fundadora del instituto DAIR para la investigación de IA independiente.",
                 img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><rect x="30" y="30" width="40" height="40" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><rect x="30" y="30" width="40" height="40" stroke-width="2" /><path d="M40,40 L60,60" stroke-width="2" /></svg>`
             },
             {
                 id: "13",
                 title: "Vitalik Buterin",
                 category: "Mind",
+                keywords: ["vitalik", "buterin", "ethereum", "eth", "ruso", "programable"],
                 short: "El filósofo de la descentralización.",
                 desc: "Creador de Ethereum. Amplió el concepto de Blockchain de ser solo dinero a ser un lenguaje de programación universal.",
                 how: "Introdujo la Máquina Virtual de Ethereum (EVM) para ejecutar contratos inteligentes.",
                 impact: "Padre del ecosistema DeFi y los NFTs que hoy mueven miles de millones.",
                 stats: "Red Ethereum: Gestiona activos por más de 400 mil millones de dólares.",
                 img: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,10 L25,55 L50,75 L75,55 Z" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,10 L25,55 L50,75 L75,55 Z M25,55 L75,55" stroke-width="2" /></svg>`
             },
             {
                 id: "14",
                 title: "Sam Altman",
                 category: "Mind",
+                keywords: ["sam", "altman", "openai", "ceo", "chatgpt"],
                 short: "Liderando la carrera hacia la AGI.",
                 desc: "Director de OpenAI. Lideró el lanzamiento de ChatGPT, el producto tecnológico de adopción más rápida de la historia.",
                 how: "Escaló la computación masiva para entrenar modelos de lenguaje con billones de parámetros.",
                 impact: "Puso la IA en manos de todos, cambiando la educación y el trabajo para siempre.",
                 stats: "ChatGPT alcanzó 100 millones de usuarios en solo 2 meses.",
                 img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="50" r="25" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="50" r="25" stroke-width="2" /><path d="M35,50 H65 M50,35 V65" stroke-width="2" /></svg>`
             },
             {
                 id: "15",
                 title: "Mira Murati",
                 category: "Mind",
+                keywords: ["mira", "murati", "cto", "mujer", "openai", "implementacion"],
                 short: "Implementando la IA a escala global.",
                 desc: "CTO de OpenAI. Responsable de convertir la investigación teórica en productos seguros y útiles.",
                 how: "Enfocada en el 'Alineamiento de IA' para asegurar que las máquinas sigan los valores humanos.",
                 impact: "Lidera la integración de la IA en la infraestructura digital del mundo moderno.",
                 stats: "Supervisa el despliegue de modelos como GPT-4 y DALL-E.",
                 img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M20,50 Q50,10 80,50 Q50,90 20,50" stroke-width="2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M20,50 Q50,10 80,50 Q50,90 20,50" stroke-width="2" /></svg>`
             },
             {
                 id: "16",
                 title: "Linus Torvalds",
                 category: "Mind",
+                keywords: ["linus", "torvalds", "linux", "git", "software libre", "codigo abierto"],
                 short: "El arquitecto del software libre.",
                 desc: "Creador de Linux y Git. Su trabajo es la base sobre la que se construye toda la tecnología moderna, incluida la nube e internet.",
                 how: "Implementó un modelo de desarrollo colaborativo masivo que venció a los sistemas cerrados.",
                 impact: "Sin él, no existiría Android, los servidores de Google ni la IA tal como la conocemos.",
                 stats: "El 100% de los supercomputadores del mundo corren Linux.",
                 img: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&q=80&w=1000",
-                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="50" r="40" stroke-width="1" stroke-dasharray="2 2"/></svg>`
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="50" r="40" stroke-width="1" stroke-dasharray="2 2" /><path d="M40,50 L50,60 L70,40" stroke-width="2" /></svg>`
             }
         ];
 
@@ -673,40 +691,74 @@
             document.body.style.overflow = 'auto';
         };
 
-        // LÓGICA DE LA IA (NEXUS BRAIN)
+        // LÓGICA DE LA IA (NEXUS BRAIN V3 - CONVERSACIONAL)
         const iaForm = document.getElementById('ia-form');
         const iaInput = document.getElementById('ia-input');
         const iaTerminal = document.getElementById('ia-terminal');
 
+        const CONVERSATION_LOGIC = {
+            greetings: ["hola", "buenos dias", "buenas tardes", "hey", "saludos", "que tal"],
+            snoopy: ["snoopy", "perro", "peanuts", "charlie brown", "comic", "dibujo"],
+            future: ["futuro", "destino", "humanidad", "donde vamos", "mañana"],
+            identity: ["quien eres", "que eres", "nexus brain", "como funcionas"]
+        };
+
         iaForm.onsubmit = (e) => {
             e.preventDefault();
-            const query = iaInput.value.toLowerCase();
+            const query = iaInput.value.toLowerCase().trim();
             if(!query) return;
 
-            addTerminalText(`> PROCESANDO CONSULTA: "${query}"...`, 'white');
+            addTerminalText(`> USUARIO: "${query}"`, '#fff');
+            addTerminalText(`> PENSANDO...`, '#444');
             
             setTimeout(() => {
-                const result = searchNexus(query);
-                if(result) {
-                    addTerminalText(`> ANALIZANDO SEMÁNTICA EN MÓDULO ${result.id}...`, '#0f0');
-                    addTerminalText(`> NEXUS BRAIN RESPONDE:`, '#0f0');
-                    addTerminalText(`${result.desc}`, '#ccc');
-                    addTerminalText(`> DATO CLAVE: ${result.stats}`, 'var(--accent-color)');
-                } else {
-                    addTerminalText(`> ERROR: NO SE ENCONTRÓ CONCORDANCIA DIRECTA.`, 'red');
-                    addTerminalText(`> SUGERENCIA: PREGUNTA SOBRE CRISPR, IA, MUSK, BITCOIN O CUÁNTICA.`, '#666');
-                }
-            }, 800);
+                const response = getAIResponse(query);
+                processResponse(response);
+            }, 600);
 
             iaInput.value = '';
         };
 
-        function searchNexus(query) {
-            return NEXUS_DATA.find(item => 
+        function getAIResponse(query) {
+            // 1. Verificar saludos
+            if (CONVERSATION_LOGIC.greetings.some(word => query.includes(word))) {
+                return { type: 'text', content: "¡Hola! Soy Nexus Brain. Estoy aquí para guiarte a través de los avances tecnológicos del siglo XXI. ¿Sobre qué tecnología te gustaría profundizar hoy?" };
+            }
+
+            // 2. Verificar identidad
+            if (CONVERSATION_LOGIC.identity.some(word => query.includes(word))) {
+                return { type: 'text', content: "Soy una entidad digital híbrida. Mi base de conocimiento reside en los 16 módulos de Nexus y mi alma artística está inspirada en la visión de Snoopy. Mi propósito es educar y conectar mentes curiosas con el futuro." };
+            }
+
+            // 3. Verificar Snoopy
+            if (CONVERSATION_LOGIC.snoopy.some(word => query.includes(word))) {
+                return { type: 'text', content: "Snoopy siempre decía: 'Sigue mirando hacia arriba... ese es el secreto de la vida'. En Nexus, aplicamos esa filosofía a la tecnología. Cada dibujo que ves representa un sueño tecnológico trazado a mano." };
+            }
+
+            // 4. Búsqueda semántica en módulos
+            const module = NEXUS_DATA.find(item => 
                 query.includes(item.title.toLowerCase()) || 
-                item.desc.toLowerCase().includes(query) ||
-                item.title.toLowerCase().split(' ').some(word => query.includes(word))
+                item.keywords.some(k => query.includes(k))
             );
+
+            if (module) {
+                return { type: 'module', content: module };
+            }
+
+            // 5. Fallback filosófico
+            return { type: 'text', content: "Interesante pregunta. Mi núcleo de datos no tiene una respuesta exacta, pero el futuro es un lienzo en blanco. Te sugiero investigar sobre la **IA**, **CRISPR** o la **Vida Multiplanetaria** para obtener más pistas." };
+        }
+
+        function processResponse(response) {
+            if (response.type === 'text') {
+                addTerminalText(`> NEXUS BRAIN:`, '#0f0');
+                typeEffect(response.content, '#ccc');
+            } else if (response.type === 'module') {
+                addTerminalText(`> MÓDULO DETECTADO: ${response.content.title.toUpperCase()}`, '#0f0');
+                addTerminalText(`> NEXUS BRAIN:`, '#0f0');
+                typeEffect(`${response.content.desc} Es un campo fascinante con un impacto de: ${response.content.impact}`, '#ccc');
+                addTerminalText(`> DATO CLAVE: ${response.content.stats}`, 'var(--accent-color)');
+            }
         }
 
         function addTerminalText(text, color) {
@@ -716,6 +768,21 @@
             p.innerHTML = text;
             iaTerminal.appendChild(p);
             iaTerminal.scrollTop = iaTerminal.scrollHeight;
+        }
+
+        function typeEffect(text, color) {
+            const p = document.createElement('div');
+            p.style.color = color;
+            p.style.marginBottom = '1rem';
+            iaTerminal.appendChild(p);
+            
+            let i = 0;
+            const timer = setInterval(() => {
+                p.innerHTML += text.charAt(i);
+                i++;
+                iaTerminal.scrollTop = iaTerminal.scrollHeight;
+                if (i >= text.length) clearInterval(timer);
+            }, 15);
         }
 
         // Cursor
