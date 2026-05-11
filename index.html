@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS // THE GREAT TECHNOLOGICAL LEAP</title>
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700;900&family=Gochi+Hand&family=Inter:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000;
+            --text-color: #fff;
+            --accent-color: #ff0000;
+            --card-bg: rgba(10, 10, 10, 0.85);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --font-main: 'Inter', sans-serif;
+            --font-tech: 'Doto', sans-serif;
+            --font-hand: 'Gochi Hand', cursive;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Cursor Personalizado */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        /* Video de Fondo */
+        .video-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            object-fit: cover;
+            opacity: 0.3;
+            filter: grayscale(1);
+        }
+
+        .gradient-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, #000 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Header */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .nexus-logo {
+            font-family: var(--font-tech);
+            font-size: clamp(3rem, 12vw, 9rem);
+            font-weight: 900;
+            letter-spacing: -5px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .nexus-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 10px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+        }
+
+        /* Secciones */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-tech);
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+
+        .section-header p {
+            font-family: var(--font-hand);
+            font-size: 1.5rem;
+            color: #666;
+        }
+
+        /* Grid de Descubrimiento */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 10rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            aspect-ratio: 1/1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .card:hover {
+            border-color: #fff;
+            transform: translateY(-10px);
+        }
+
+        .card .discovery-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+            z-index: 2;
+        }
+
+        .card:hover .discovery-overlay {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .card .discovery-id {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: #444;
+        }
+
+        .card .content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+            z-index: 1;
+        }
+
+        .card:hover .content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card h3 {
+            font-family: var(--font-tech);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-more {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            cursor: none;
+        }
+
+        .btn-more:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .snoopy-draw {
+            width: 150px;
+            height: 150px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 1;
+        }
+
+        /* Modal de Información Profunda */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98);
+            z-index: 1000;
+            display: none;
+            overflow-y: auto;
+            padding: 5rem 2rem;
+        }
+
+        .modal-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .modal-header {
+            margin-bottom: 3rem;
+        }
+
+        .modal-header h2 {
+            font-family: var(--font-tech);
+            font-size: 4rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border: 1px solid #333;
+            margin-bottom: 2rem;
+        }
+
+        .modal-body {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .modal-body h4 {
+            color: #fff;
+            margin: 2rem 0 1rem;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            border-bottom: 1px solid #222;
+        }
+
+        .close-modal {
+            position: fixed;
+            top: 2rem; right: 2rem;
+            font-family: var(--font-mono);
+            color: #fff;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            cursor: none;
+            padding: 1rem;
+            border: 1px solid #333;
+        }
+
+        /* IA: Nexus Brain */
+        .ia-section {
+            background: #050505;
+            padding: 8rem 2rem;
+            border-top: 1px solid #111;
+        }
+
+        .ia-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .ia-terminal {
+            background: #000;
+            border: 1px solid #222;
+            padding: 2rem;
+            text-align: left;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            height: 400px;
+            overflow-y: auto;
+            color: #0f0;
+            box-shadow: 0 0 50px rgba(0, 255, 0, 0.05);
+        }
+
+        .ia-input-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .ia-input {
+            flex: 1;
+            background: #111;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            outline: none;
+        }
+
+        .ia-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 0 2rem;
+            font-family: var(--font-tech);
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: none;
+        }
+
+        /* Footer */
+        footer {
+            padding: 5rem;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: #333;
+            letter-spacing: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nexus-logo { font-size: 4rem; }
+            .modal-header h2 { font-size: 2.5rem; }
+            * { cursor: auto !important; }
+            #cursor { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+
+    <video autoplay muted loop class="video-bg">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-circuit-board-microchip-animation-926-large.mp4" type="video/mp4">
+    </video>
+    <div class="gradient-overlay"></div>
+
+    <header>
+        <p class="nexus-tagline">NEXUS PROYECTO</p>
+        <h1 class="nexus-logo">NEXUS</h1>
+        <p class="nexus-tagline">THE GREAT TECHNOLOGICAL LEAP</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="section-header">
+            <h2>Inventos del Siglo XXI</h2>
+            <p>"A veces me quedo despierto por la noche preguntándome si el futuro tendrá galletas..." — Snoopy</p>
+        </div>
+
+        <div class="grid" id="tech-grid">
+            <!-- Módulos cargados dinámicamente -->
+        </div>
+
+        <div class="section-header">
+            <h2>Arquitectos del Futuro</h2>
+            <p>"No soy un perro ordinario, soy un visionario."</p>
+        </div>
+
+        <div class="grid" id="minds-grid">
+            <!-- Módulos cargados dinámicamente -->
+        </div>
+
+    </div>
+
+    <!-- IA SECCIÓN -->
+    <section class="ia-section">
+        <div class="ia-container">
+            <h2 style="font-family: var(--font-tech); font-size: 2.5rem; margin-bottom: 1rem;">NEXUS BRAIN IA</h2>
+            <p style="margin-bottom: 3rem; color: #666; font-family: var(--font-mono); font-size: 0.7rem;">CONSULTA NUESTRA BASE DE DATOS SEMÁNTICA EN TIEMPO REAL</p>
+            
+            <div class="ia-terminal" id="ia-terminal">
+                > SISTEMA NEXUS INICIALIZADO...<br>
+                > BASE DE DATOS CARGADA: 16 MÓDULOS DE ALTA FIDELIDAD.<br>
+                > ESPERANDO COMANDO DEL USUARIO...
+            </div>
+
+            <form id="ia-form" class="ia-input-group">
+                <input type="text" id="ia-input" class="ia-input" placeholder="Pregúntame sobre CRISPR, IA, Musk o el Futuro...">
+                <button type="submit" class="ia-btn">PREGUNTAR</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- MODAL -->
+    <div class="modal" id="modal">
+        <div class="close-modal" id="close-modal">CERRAR // EXIT</div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">TÍTULO</h2>
+            </div>
+            <img src="" alt="" class="modal-image" id="modal-image">
+            <div class="modal-body" id="modal-body">
+                <!-- Contenido -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        NEXUS // EL GRAN SALTO TECNOLÓGICO // 2026 // CREADO POR GEMINI CLI
+    </footer>
+
+    <script>
+        // BASE DE DATOS NEXUS (16 MÓDULOS)
+        const NEXUS_DATA = [
+            {
+                id: "01",
+                title: "IA Generativa",
+                category: "Tech",
+                short: "Máquinas que crean arte, código y lenguaje.",
+                desc: "La Inteligencia Artificial Generativa representa el cambio más profundo en la computación desde el microchip. Utiliza redes neuronales profundas para aprender patrones de vastas bases de datos y generar contenido nuevo y original.",
+                how: "Funciona mediante Transformadores (LLMs) que predicen la siguiente palabra o píxel basándose en un 'contexto' masivo.",
+                impact: "Ha democratizado la creación, pero plantea desafíos éticos sobre la verdad y el empleo. El 79% de los jóvenes ya la usan semanalmente.",
+                stats: "Mercado estimado: 1.3 Trillones de USD para 2032.",
+                img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M30,50 Q50,20 70,50 T70,80" stroke-width="2"/><circle cx="50" cy="50" r="20" stroke-dasharray="4 4"/></svg>`
+            },
+            {
+                id: "02",
+                title: "CRISPR-Cas9",
+                category: "Tech",
+                short: "Tijeras moleculares para editar la vida.",
+                desc: "CRISPR es una tecnología que permite a los científicos editar genes con una precisión nunca antes vista. Es, esencialmente, la capacidad de 'programar' el código fuente de los seres vivos.",
+                how: "Utiliza una proteína (Cas9) guiada por ARN para encontrar una secuencia específica de ADN y cortarla, permitiendo su eliminación o reemplazo.",
+                impact: "Potencial para curar todas las enfermedades hereditarias y el cáncer, pero abre el debate sobre los 'bebés de diseño'.",
+                stats: "Precisión de edición aumentada en un 99.8% desde 2012.",
+                img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M40,20 L60,80 M60,20 L40,80" stroke-width="2"/><circle cx="50" cy="50" r="30"/></svg>`
+            },
+            {
+                id: "03",
+                title: "Vida Multiplanetaria",
+                category: "Tech",
+                short: "Haciendo de la humanidad una especie estelar.",
+                desc: "El objetivo de establecer una presencia permanente en Marte. Esto no es solo exploración, es un 'seguro de vida' para la conciencia humana.",
+                how: "Se basa en cohetes reutilizables de gran escala como el Starship, reduciendo los costos de lanzamiento en 100 veces.",
+                impact: "Inspiración global masiva y el desarrollo de tecnologías de soporte vital extremo que servirán en la Tierra.",
+                stats: "Meta de colonización inicial: 2029-2035.",
+                img: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,20 Q70,50 50,80 Q30,50 50,20" stroke-width="2"/></svg>`
+            },
+            {
+                id: "04",
+                title: "Computación Cuántica",
+                category: "Tech",
+                short: "El fin de la computación binaria tradicional.",
+                desc: "Aprovecha las leyes de la física cuántica para procesar información de una manera que las computadoras normales simplemente no pueden.",
+                how: "Utiliza Qubits que pueden estar en varios estados al mismo tiempo (superposición) y estar conectados instantáneamente (entrelazamiento).",
+                impact: "Resolverá problemas de química y materiales en minutos que tardarían miles de años hoy. Romperá toda la seguridad actual.",
+                stats: "Capacidad de procesamiento: Millones de veces superior a una CPU clásica.",
+                img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><rect x="30" y="30" width="40" height="40" stroke-width="2"/></svg>`
+            },
+            {
+                id: "05",
+                title: "Metaverso",
+                category: "Tech",
+                short: "La convergencia de lo físico y lo digital.",
+                desc: "Un entorno virtual persistente donde los humanos interactúan social y económicamente a través de avatares en 3D.",
+                how: "Integración de Realidad Virtual (VR), Realidad Aumentada (AR) y economías basadas en Blockchain.",
+                impact: "Cambiará la educación, el trabajo y el entretenimiento. El 60% de las marcas de lujo ya operan en el Metaverso.",
+                stats: "Economía digital potencial: 5 trillones de dólares.",
+                img: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M25,40 H75 V60 H25 Z" stroke-width="2"/></svg>`
+            },
+            {
+                id: "06",
+                title: "Fusión Nuclear",
+                category: "Tech",
+                short: "Energía limpia de las estrellas en la Tierra.",
+                desc: "A diferencia de la fisión (actual), la fusión une núcleos atómicos, liberando energía masiva sin residuos radiactivos de larga duración.",
+                how: "Utiliza reactores Tokamak que confinan plasma a millones de grados mediante potentes imanes.",
+                impact: "Energía infinita y barata, deteniendo el cambio climático de forma radical.",
+                stats: "Un gramo de combustible de fusión equivale a 11 toneladas de carbón.",
+                img: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="50" r="25" stroke-width="3"/></svg>`
+            },
+            {
+                id: "07",
+                title: "Interfaces Cerebro",
+                category: "Tech",
+                short: "Conexión directa entre mente y ordenador.",
+                desc: "Sistemas como Neuralink que implantan hilos delgados en la corteza cerebral para leer la actividad neuronal.",
+                how: "Traduce señales eléctricas del cerebro en comandos digitales (moverse, escribir, controlar máquinas).",
+                impact: "Devolverá la movilidad a paralíticos y permitirá la telepatía tecnológica.",
+                stats: "Latencia de respuesta: menor a 1ms.",
+                img: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,20 C30,20 20,40 20,60" stroke-width="2"/></svg>`
+            },
+            {
+                id: "08",
+                title: "Blockchain 2.0",
+                category: "Tech",
+                short: "Soberanía digital y confianza sin intermediarios.",
+                desc: "La evolución de las cadenas de bloques hacia sistemas programables (Smart Contracts) que gestionan el valor de forma automática.",
+                how: "Libros contables distribuidos que no pueden ser alterados ni censurados por gobiernos o bancos.",
+                impact: "Eliminación de la corrupción en transacciones y creación de una nueva economía global descentralizada.",
+                stats: "Más de 500,000 nodos activos protegiendo la red global.",
+                img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,10 L90,30 V70 L50,90 L10,70 V30 Z" stroke-width="2"/></svg>`
+            },
+            {
+                id: "09",
+                title: "Satoshi Nakamoto",
+                category: "Mind",
+                short: "El fantasma que cambió el dinero.",
+                desc: "Identidad anónima detrás de Bitcoin. En 2008 publicó el paper que resolvió el problema del doble gasto sin confianza centralizada.",
+                how: "Creó la arquitectura de la Prueba de Trabajo (Proof of Work) y el primer bloque de la historia.",
+                impact: "Inició la revolución cripto y planteó la pregunta: ¿quién debe controlar nuestro dinero?",
+                stats: "Patrimonio estimado (si existe): 1.1 millones de Bitcoins.",
+                img: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="40" r="15" stroke-width="2"/></svg>`
+            },
+            {
+                id: "10",
+                title: "Jennifer Doudna",
+                category: "Mind",
+                short: "La arquitecta de la genética moderna.",
+                desc: "Bioquímica ganadora del Nobel que descubrió cómo usar CRISPR como una herramienta de edición genética universal.",
+                how: "Lideró la investigación que convirtió un mecanismo inmune de bacterias en una herramienta de laboratorio global.",
+                impact: "Líder ética en el debate sobre la edición de la línea germinal humana.",
+                stats: "Premio Nobel de Química 2020.",
+                img: "https://images.unsplash.com/photo-1579154235602-3c35bd799657?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,10 Q30,30 50,50 Q70,70 50,90" stroke-width="2"/></svg>`
+            },
+            {
+                id: "11",
+                title: "Elon Musk",
+                category: "Mind",
+                short: "Acelerando el futuro multiplanetario.",
+                desc: "Impulsor de Tesla, SpaceX y Neuralink. Su filosofía es el 'Pensamiento desde Primeros Principios'.",
+                how: "Utiliza capital de riesgo para resolver problemas existenciales: energía, transporte y supervivencia de la especie.",
+                impact: "Hizo los coches eléctricos deseables y los cohetes reutilizables una realidad.",
+                stats: "Lanzamientos de SpaceX en 2023: Casi 100 misiones exitosas.",
+                img: "https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,20 L30,70 L70,70 Z" stroke-width="2"/></svg>`
+            },
+            {
+                id: "12",
+                title: "Timnit Gebru",
+                category: "Mind",
+                short: "La conciencia ética de la IA.",
+                desc: "Investigadora líder en ética algorítmica. Co-fundadora de 'Black in AI'.",
+                how: "Denunció los sesgos raciales y de género en los sistemas de reconocimiento facial corporativos.",
+                impact: "Obligó a las Big Tech a replantearse la seguridad y la justicia en el desarrollo de la IA.",
+                stats: "Fundadora del instituto DAIR para la investigación de IA independiente.",
+                img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><rect x="30" y="30" width="40" height="40" stroke-width="2"/></svg>`
+            },
+            {
+                id: "13",
+                title: "Vitalik Buterin",
+                category: "Mind",
+                short: "El filósofo de la descentralización.",
+                desc: "Creador de Ethereum. Amplió el concepto de Blockchain de ser solo dinero a ser un lenguaje de programación universal.",
+                how: "Introdujo la Máquina Virtual de Ethereum (EVM) para ejecutar contratos inteligentes.",
+                impact: "Padre del ecosistema DeFi y los NFTs que hoy mueven miles de millones.",
+                stats: "Red Ethereum: Gestiona activos por más de 400 mil millones de dólares.",
+                img: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M50,10 L25,55 L50,75 L75,55 Z" stroke-width="2"/></svg>`
+            },
+            {
+                id: "14",
+                title: "Sam Altman",
+                category: "Mind",
+                short: "Liderando la carrera hacia la AGI.",
+                desc: "Director de OpenAI. Lideró el lanzamiento de ChatGPT, el producto tecnológico de adopción más rápida de la historia.",
+                how: "Escaló la computación masiva para entrenar modelos de lenguaje con billones de parámetros.",
+                impact: "Puso la IA en manos de todos, cambiando la educación y el trabajo para siempre.",
+                stats: "ChatGPT alcanzó 100 millones de usuarios en solo 2 meses.",
+                img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="50" r="25" stroke-width="2"/></svg>`
+            },
+            {
+                id: "15",
+                title: "Mira Murati",
+                category: "Mind",
+                short: "Implementando la IA a escala global.",
+                desc: "CTO de OpenAI. Responsable de convertir la investigación teórica en productos seguros y útiles.",
+                how: "Enfocada en el 'Alineamiento de IA' para asegurar que las máquinas sigan los valores humanos.",
+                impact: "Lidera la integración de la IA en la infraestructura digital del mundo moderno.",
+                stats: "Supervisa el despliegue de modelos como GPT-4 y DALL-E.",
+                img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><path d="M20,50 Q50,10 80,50 Q50,90 20,50" stroke-width="2"/></svg>`
+            },
+            {
+                id: "16",
+                title: "Linus Torvalds",
+                category: "Mind",
+                short: "El arquitecto del software libre.",
+                desc: "Creador de Linux y Git. Su trabajo es la base sobre la que se construye toda la tecnología moderna, incluida la nube e internet.",
+                how: "Implementó un modelo de desarrollo colaborativo masivo que venció a los sistemas cerrados.",
+                impact: "Sin él, no existiría Android, los servidores de Google ni la IA tal como la conocemos.",
+                stats: "El 100% de los supercomputadores del mundo corren Linux.",
+                img: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&q=80&w=1000",
+                snoopy: `<svg viewBox="0 0 100 100" class="snoopy-draw"><circle cx="50" cy="50" r="40" stroke-width="1" stroke-dasharray="2 2"/></svg>`
+            }
+        ];
+
+        // RENDERIZADO DE GRIDS
+        const techGrid = document.getElementById('tech-grid');
+        const mindsGrid = document.getElementById('minds-grid');
+
+        function renderModules() {
+            NEXUS_DATA.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="discovery-overlay">
+                        ${item.snoopy}
+                        <div class="discovery-id" style="position: absolute; bottom: 1rem;">ID_${item.id} // SECURED</div>
+                    </div>
+                    <div class="content">
+                        <h3>${item.title}</h3>
+                        <p>${item.short}</p>
+                        <button class="btn-more" onclick="openModal('${item.id}')">Explorar Profundamente</button>
+                    </div>
+                `;
+                if(item.category === 'Tech') techGrid.appendChild(card);
+                else mindsGrid.appendChild(card);
+            });
+        }
+
+        // LÓGICA DEL MODAL
+        const modal = document.getElementById('modal');
+        function openModal(id) {
+            const data = NEXUS_DATA.find(x => x.id === id);
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-image').src = data.img;
+            document.getElementById('modal-body').innerHTML = `
+                <h4>Definición y Alcance</h4>
+                <p>${data.desc}</p>
+                <h4>¿Cómo funciona técnicamente?</h4>
+                <p>${data.how}</p>
+                <h4>Impacto Social</h4>
+                <p>${data.impact}</p>
+                <h4>Estadísticas y Futuro</h4>
+                <p style="color: var(--accent-color); font-family: var(--font-mono);">${data.stats}</p>
+            `;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        document.getElementById('close-modal').onclick = () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+
+        // LÓGICA DE LA IA (NEXUS BRAIN)
+        const iaForm = document.getElementById('ia-form');
+        const iaInput = document.getElementById('ia-input');
+        const iaTerminal = document.getElementById('ia-terminal');
+
+        iaForm.onsubmit = (e) => {
+            e.preventDefault();
+            const query = iaInput.value.toLowerCase();
+            if(!query) return;
+
+            addTerminalText(`> PROCESANDO CONSULTA: "${query}"...`, 'white');
+            
+            setTimeout(() => {
+                const result = searchNexus(query);
+                if(result) {
+                    addTerminalText(`> ANALIZANDO SEMÁNTICA EN MÓDULO ${result.id}...`, '#0f0');
+                    addTerminalText(`> NEXUS BRAIN RESPONDE:`, '#0f0');
+                    addTerminalText(`${result.desc}`, '#ccc');
+                    addTerminalText(`> DATO CLAVE: ${result.stats}`, 'var(--accent-color)');
+                } else {
+                    addTerminalText(`> ERROR: NO SE ENCONTRÓ CONCORDANCIA DIRECTA.`, 'red');
+                    addTerminalText(`> SUGERENCIA: PREGUNTA SOBRE CRISPR, IA, MUSK, BITCOIN O CUÁNTICA.`, '#666');
+                }
+            }, 800);
+
+            iaInput.value = '';
+        };
+
+        function searchNexus(query) {
+            return NEXUS_DATA.find(item => 
+                query.includes(item.title.toLowerCase()) || 
+                item.desc.toLowerCase().includes(query) ||
+                item.title.toLowerCase().split(' ').some(word => query.includes(word))
+            );
+        }
+
+        function addTerminalText(text, color) {
+            const p = document.createElement('div');
+            p.style.color = color;
+            p.style.marginBottom = '0.5rem';
+            p.innerHTML = text;
+            iaTerminal.appendChild(p);
+            iaTerminal.scrollTop = iaTerminal.scrollHeight;
+        }
+
+        // Cursor
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+
+        // Inicio
+        renderModules();
+    </script>
+</body>
+</html>
