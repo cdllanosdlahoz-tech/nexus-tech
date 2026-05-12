@@ -25,28 +25,31 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-main);
-            overflow-x: hidden;
-            line-height: 1.6;
+        /* Cursor solo en Desktop con mouse */
+        @media (pointer: fine) {
+            * {
+                cursor: none;
+            }
+            #cursor {
+                width: 20px;
+                height: 20px;
+                border: 1px solid #fff;
+                border-radius: 50%;
+                position: fixed;
+                pointer-events: none;
+                z-index: 10000;
+                transition: transform 0.1s ease;
+                mix-blend-mode: difference;
+                display: block;
+            }
         }
 
-        /* Cursor Personalizado */
-        #cursor {
-            width: 20px;
-            height: 20px;
-            border: 1px solid #fff;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-            transition: transform 0.1s ease;
-            mix-blend-mode: difference;
+        @media (pointer: coarse) {
+            #cursor {
+                display: none;
+            }
         }
 
         /* Video de Fondo */
